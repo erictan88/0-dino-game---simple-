@@ -1,6 +1,5 @@
 controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Dino.isHittingTile(CollisionDirection.Bottom)) {
-        Dino.setVelocity(0, 30)
         Dino.y += -30
     }
 })
@@ -36,18 +35,11 @@ Dino = sprites.create(img`
     . . . . . . b b b . . . . . . . 
     `, SpriteKind.Player)
 Dino.setPosition(20, 80)
-tiles.setTilemap(tiles.createTilemap(hex`0a0008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101010101010101010100000000000000000000`, img`
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    . . . . . . . . . . 
-    2 2 2 2 2 2 2 2 2 2 
-    `, [myTiles.transparency16,myTiles.tile1], TileScale.Sixteen))
-Dino.setVelocity(0, 30)
+tiles.setTilemap(tilemap`level1`)
 let Speed = -60
+game.onUpdate(function () {
+    Dino.setVelocity(0, 30)
+})
 game.onUpdateInterval(randint(1500, 3000), function () {
     Tree = sprites.create(img`
         . . . . . . . . . . . . . . . . 
