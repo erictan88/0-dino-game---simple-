@@ -1,6 +1,6 @@
 controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Dino.isHittingTile(CollisionDirection.Bottom)) {
-        Dino.y += -30
+        Dino.y += -40
     }
 })
 scene.onHitWall(SpriteKind.Enemy, function (sprite, location) {
@@ -34,11 +34,11 @@ Dino = sprites.create(img`
     . . . . . . b b . . b b . . . . 
     . . . . . . b b b . . . . . . . 
     `, SpriteKind.Player)
-Dino.setPosition(20, 80)
 tiles.setTilemap(tilemap`level1`)
+tiles.placeOnTile(Dino, tiles.getTileLocation(2, 2))
 let Speed = -60
 game.onUpdate(function () {
-    Dino.setVelocity(0, 30)
+    Dino.setVelocity(0, 60)
 })
 game.onUpdateInterval(randint(1500, 3000), function () {
     Tree = sprites.create(img`
